@@ -70,6 +70,7 @@ namespace org.westhoffswelt.pdfpresenter {
             { "mirror-screens", 'm', 0, 0, ref Options.display_mirror, "Display the presentation on both screens", null },
             { "disable-cache", 'c', 0, 0, ref Options.disable_caching, "Disable caching and pre-rendering of slides to save memory at the cost of speed.", null },
             { "disable-compression", 'z', 0, 0, ref Options.disable_cache_compression, "Disable the compression of slide images to trade memory consumption for speed. (Avg. factor 30)", null },
+            { "log-transitions", 'f', 0, OptionArg.STRING, ref Options.log_file, "Log slide transition times to the specified file.", "FILE" },
             { null }
         };
 

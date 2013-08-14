@@ -63,6 +63,11 @@ namespace pdfpc {
         public static uint duration = 987654321u;
 
         /**
+         * Commandline option to jump to a specific slide number
+         */
+        public static uint start_slide = 0;
+
+        /**
          * Commandline option providing the time from which on the timer should
          * change its color.
          */

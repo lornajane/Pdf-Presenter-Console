@@ -63,6 +63,7 @@ namespace pdfpc {
         const OptionEntry[] options = {
             { "duration", 'd', 0, OptionArg.INT, ref Options.duration, "Duration in minutes of the presentation used for timer display.", "N" },
             { "end-time", 'e', 0, OptionArg.STRING, ref Options.end_time, "End time of the presentation. (Format: HH:MM (24h))", "T" },
+            { "start-slide", 'g', 0, OptionArg.INT, ref Options.start_slide, "Slide number to start from.", "N" },
             { "last-minutes", 'l', 0, OptionArg.INT, ref Options.last_minutes, "Time in minutes, from which on the timer changes its color. (Default 5 minutes)", "N" },
             { "start-time", 't', 0, OptionArg.STRING, ref Options.start_time, "Start time of the presentation to be used as a countdown. (Format: HH:MM (24h))", "T" },
             { "current-size", 'u', 0, OptionArg.INT, ref Options.current_size, "Percentage of the presenter screen to be used for the current slide. (Default 60)", "N" },
@@ -203,6 +204,13 @@ namespace pdfpc {
                     else
                         this.presentation_window =
                             this.create_presentation_window( metadata, -1 );
+            }
+
+            // handle jumping to a given slide at start
+            if ( Options.start_slide > 0 ) {
+                var slide_number = (int) Options.start_slide - 1;
+                stdout.printf( "Going to slide: %d \n", slide_number );
+                this.controller.page_change_request( slide_number );
             }
 
             // The windows are always displayed at last to be sure all caches have
